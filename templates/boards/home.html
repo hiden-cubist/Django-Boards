@@ -1,4 +1,10 @@
-{% extends 'boards/base.html' %}
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'boards/css/boards.css' %}">
+{% endblock %}
 
 {% block breadcrumb %}
     <li class="breadcrumb-item active" aria-current="page">Boards</li>
@@ -18,7 +24,7 @@
             {% for board in boards %}
                 <tr>
                     <td>
-                        <a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a>
+                        <a href="{% url 'boards:board_topics' board.pk %}">{{ board.name }}</a>
                         <small class="text-muted d-block">{{ board.description }}</small>
                     </td>
                     <td class="align-middle">0</td>

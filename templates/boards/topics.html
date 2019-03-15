@@ -1,17 +1,23 @@
-{% extends 'boards/base.html' %}
+{% extends 'base.html' %}
+
+{% load static %}
 
 {% block title %}
     {{ board.name }} - {{ block.super }}
 {% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'boards/css/boards.css' %}">
+{% endblock %}
+
 {% block breadcrumb %}
-    <li class="breadcrumb-item"><a href="{% url 'home' %}">Boards</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'boards:home' %}">Boards</a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ board.name }}</li>
 {% endblock %}
 
 {% block content %}
     <div class="mb-4">
-        <a href="{% url 'new_topic' board.pk %}" class="btn btn-primary">New topic</a>
+        <a href="{% url 'boards:new_topic' board.pk %}" class="btn btn-primary">New topic</a>
     </div>
     
     <table class="table table-dark">
